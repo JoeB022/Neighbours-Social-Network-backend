@@ -57,3 +57,29 @@ def view_events():
         } for event in events
     ]
     return jsonify(event_list), 200
+
+@event_bp.route('/events/delete/<int:event_id>', methods=['DELETE'])
+@jwt_required()
+def delete_event(event_id):
+    try:
+        user_id = get_jwt_identity()  # Get the logged-in user's ID
+        event = Event.query.get(event_id)
+
+        if not event:
+            return jsonify({"error": "Event not found"}), 404
+
+        # Ensure the logged-in user is the organizer of the event
+        # Ensure both are integers (or both strings)
+        if int(event.organizer_id) != int(user_id):
+            return jsonify({"error": "Unauthorized to delete this event"}), 403
+
+
+        db.session.delete(event)
+        db.session.commit()
+
+        return jsonify({"message": "Event deleted successfully"}), 200
+
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 500
+
