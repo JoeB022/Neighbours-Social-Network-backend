@@ -4,6 +4,11 @@ Backend = https://neighbours-social-network-backend.onrender.com
 Frontend = https://neighbours-social-network-frontend.vercel.app
 
 
+# Recording links
+Frontend = https://www.loom.com/share/045aef4fcb5345f7879566a739a24835?sid=dbaae2e1-5cc6-4303-8584-f4cf88c25b9d
+
+Backend = https://www.loom.com/share/019cf3b5fe954f278806d189db2199e7?sid=dde144ac-260e-4c81-ada1-3e8d0465b6ec
+
 
 ## Overview
 The **Neighborhood Social Network** is a web application designed to help neighbors connect, organize events, and foster community collaboration. The platform enables users to post events, RSVP, comment, send private messages, and participate in discussions.
